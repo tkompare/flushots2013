@@ -154,6 +154,16 @@
 		}); // END brand popover
 		
 		/*
+		 * The agency popover
+		 */
+		$('#nav-agency').popover({
+			placement:'auto top',
+			title:'<b>About This Web App</b>',
+			html:true,
+			content:'<small>Built by <a href="http://about.me/tomkompare" target="_blank">Tom Kompare</a>. This was not developed by the <a href="http://www.cityofchicago.org/city/en/depts/cdph.html" target="_blank">Chicago Department of Public Health (CDPH)</a> and CDPH makes no representations as to the accuracy of the information provided by this map application. <a href="https://github.com/tkompare/flushots2013" target="_blank">The code behind this web application</a> is free and open under an MIT License. <a href="https://github.com/tkompare/flushots2013/issues" target="_blank">Feel free to send me comments</a>.</small>'
+		}); // END brand popover
+		
+		/*
 		 * The Day dropup list listener
 		 */
 		$('.day').change(function(){
