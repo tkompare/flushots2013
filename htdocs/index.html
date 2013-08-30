@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<title>Get A Free Flu Shot</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+<meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<style>
+	body { padding-bottom: 70px; }
+	.google-map-canvas,
+	.google-map-canvas * { .box-sizing(content-box); }
+	#map img { max-width: none; }
+</style>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+	
+			<div id=map style="position:absolute; top:0; bottom:0; left:0; right:0;"></div>
+	
+	<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a id="nav-brand" class="navbar-brand">Get A Free Flu Shot</a>
+		</div>
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<li id="nav-li-today" class="active"><a id="nav-today" href="#today">Today</a></li>
+				<li id="nav-li-days" class="dropdown">
+					<a id="nav-days" href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="nav-days-text">On A Day</span><b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<div data-toggle="buttons">
+							<label class="btn btn-default btn-block day-btn">
+								<input type="radio" name="day" class="day" id="nav-sunday" value="Sunday"> Sunday
+							</label>
+							<label class="btn btn-default btn-block day-btn">
+								<input type="radio" name="day" class="day" id="nav-monday" value="Monday"> Monday
+							</label>
+							<label class="btn btn-default btn-block day-btn">
+								<input type="radio" name="day" class="day" id="nav-tuesday" value="Tuesday"> Tuesday
+							</label>
+							<label class="btn btn-default btn-block day-btn">
+								<input type="radio" name="day" class="day" id="nav-wednesday" value="Wednesday"> Wednesday
+							</label>
+							<label class="btn btn-default btn-block day-btn">
+								<input type="radio" name="day" class="day" id="nav-thurday" value="Thursday"> Thurday
+							</label>
+							<label class="btn btn-default btn-block day-btn">
+								<input type="radio" name="day" class="day" id="nav-friday" value="Friday"> Friday
+							</label>
+							<label class="btn btn-default btn-block day-btn">
+								<input type="radio" name="day" class="day" id="nav-saturday" value="Satuday"> Saturday
+							</label>
+						</div>
+					</ul>
+				</li>
+				<form class="navbar-form navbar-left" role="search">
+					<div class="input-group">
+						<input id="nav-address" type="text" class="form-control input-sm" placeholder="Enter an address">
+						<span class="input-group-btn">
+							<button id="nav-go" class="btn btn-default btn-sm" type="button">Go</button>
+						</span>
+					</div>
+				</form>
+			</ul>
+			<p class="navbar-text pull-right"><small>Chicago Department of Public Health</small></p>
+		</div>
+	</nav>
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+	<script src="//maps.googleapis.com/maps/api/js?client=gme-smartchicagocollaborative&sensor=true"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/tkmap.4.0.0.js"></script>
+	<script src="js/main.js"></script>	
+</body>
+</html>
