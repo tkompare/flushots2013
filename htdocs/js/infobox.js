@@ -120,6 +120,8 @@ function InfoBox(opt_opts) {
   this.moveListener_ = null;
   this.contextListener_ = null;
   this.fixedWidthSet_ = null;
+  
+  this.visible = false;
 }
 
 /* InfoBox extends OverlayView in the Google Maps API v3.

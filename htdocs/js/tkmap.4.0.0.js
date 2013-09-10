@@ -4,7 +4,7 @@
  * @param array Args
  * @type class
  */
-var TkMap = (function(){
+var TkMap = (function($){
 	var constructor = function(Args)
 	{
 		/*
@@ -254,4 +254,4 @@ var TkMap = (function(){
 		}
 	};
 	return constructor;
-})();
+})(jQuery);
