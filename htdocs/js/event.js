@@ -49,21 +49,6 @@ var Event = (function($){
 					}
 					ThisEvent.infoboxtext += 'daddr='+ThisEvent.data.street1+' '+ThisEvent.data.city+', '+ThisEvent.data.state+' '+ThisEvent.data.postal_code+'" target="_blank" style="color:#22f">Get Directions</a>';
 					ThisEvent.infoboxtext += '</div>';
-					/*
-					google.maps.event.addListener(ThisEvent.infobox, 'domready', function() {
-						$('#ical-'+ThisEvent.data.id).icalendar({
-							start: Date._parse(ThisEvent.data.begin_date),
-							end: Date._parse(ThisEvent.data.begin_date),
-							title: 'Flu Shot Event',
-							summary: 'Flu Shot Event',
-							description: "Please remember to bring your immunization/shot records with you.",
-							location: ThisEvent.data.facility_name+' - '+ThisEvent.data.street1+' - '+ThisEvent.data.city+' '+ThisEvent.data.state+' '+ThisEvent.data.postal_code,
-							iconSize: 16,
-							sites: ['icalendar'],
-							echoUrl: 'ical.php'
-						});
-					});
-					*/
 					ThisEvent.infobox.setContent(ThisEvent.infoboxtext);
 					ThisEvent.infobox.open(Map,ThisEvent.marker);
 					
