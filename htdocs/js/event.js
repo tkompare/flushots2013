@@ -10,6 +10,9 @@ var Event = (function($){
 		this.infobox = null;
 		this.infoboxtext = null;
 		
+		// Oh dear lord, browser detection. -10 Charisma. Is the browser android or iPhone?
+		this.isPhone = (navigator.userAgent.match(/iPhone/i) || (navigator.userAgent.toLowerCase().indexOf("android") > -1) || (navigator.userAgent.toLowerCase().indexOf("blackberry") > -1)) ? true : false;
+
 		this.toggleInfoBox = function(Map,ThisEvent)
 		{
 			return function(){
@@ -28,7 +31,17 @@ var Event = (function($){
 					if(ThisEvent.data.street2 !== '') { ThisEvent.infoboxtext += '<br>'+ThisEvent.data.street2; }
 					ThisEvent.infoboxtext += '<br>'+ThisEvent.data.city+', '+ThisEvent.data.state+' '+ThisEvent.data.postal_code;
 					if(ThisEvent.data.contact !== '') { ThisEvent.infoboxtext += '<br>Contact: '+ThisEvent.data.contact; }
-					if(ThisEvent.data.phone !== '') { ThisEvent.infoboxtext += '<br>'+ThisEvent.data.phone; }
+					if(ThisEvent.data.phone !== '') { 
+						if(ThisEvent.isPhone === false)
+						{
+							ThisEvent.infoboxtext += '<br>'+ThisEvent.data.phone;
+						}
+						else
+						{
+							var phone = String(ThisEvent.data.phone).replace(/[^0-9]/g,'');
+							ThisEvent.infoboxtext += '<br><a href="tel:+1'+phone.slice(-10)+'" style="color:#22f">&#x260E; <u>'+phone.slice(-10,-7)+'-'+phone.slice(-7,-4)+'-'+phone.slice(-4)+'</u></a>';
+						}
+					}
 					ThisEvent.infoboxtext += '<br><a class="directions" href="http://www.google.com/maps?';
 					if($('#nav-address').val() !== '')
 					{
