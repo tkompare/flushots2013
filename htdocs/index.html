@@ -14,6 +14,7 @@
 	.google-map-canvas,
 	.google-map-canvas * { .box-sizing(content-box); }
 	#map img { max-width: none; }
+	.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {background-color:#333; color:#fff; text-decoration:none;}
 </style>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -22,7 +23,7 @@
 </head>
 <body>
 	
-			<div id=map style="position:absolute; top:0; bottom:0; left:0; right:0;"></div>
+	<div id=map style="position:absolute; top:0; bottom:0; left:0; right:0;"></div>
 	
 	<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
 		<div class="navbar-header">
@@ -32,37 +33,39 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a id="nav-brand" class="navbar-brand">Get A Flu Shot</a>
+			<a id="nav-brand" class="navbar-brand" data-toggle="modal" href="#modal-gafs">Get A Flu Shot</a>
 		</div>
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
-				<li id="nav-li-today"><a id="nav-today" href="#today">Today</a></li>
+				<li id="nav-li-all"><a id="nav-all" href="#all">All</a></li>
 				<li id="nav-li-days" class="dropdown">
 					<a id="nav-days" href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="nav-days-text">On A Day</span><b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<div data-toggle="buttons">
-							<label class="btn btn-default btn-block day-btn">
-								<input type="radio" name="day" class="day" id="nav-sunday" value="Sunday"> Sunday
-							</label>
-							<label class="btn btn-default btn-block day-btn">
-								<input type="radio" name="day" class="day" id="nav-monday" value="Monday"> Monday
-							</label>
-							<label class="btn btn-default btn-block day-btn">
-								<input type="radio" name="day" class="day" id="nav-tuesday" value="Tuesday"> Tuesday
-							</label>
-							<label class="btn btn-default btn-block day-btn">
-								<input type="radio" name="day" class="day" id="nav-wednesday" value="Wednesday"> Wednesday
-							</label>
-							<label class="btn btn-default btn-block day-btn">
-								<input type="radio" name="day" class="day" id="nav-thurday" value="Thursday"> Thursday
-							</label>
-							<label class="btn btn-default btn-block day-btn">
-								<input type="radio" name="day" class="day" id="nav-friday" value="Friday"> Friday
-							</label>
-							<label class="btn btn-default btn-block day-btn">
-								<input type="radio" name="day" class="day" id="nav-saturday" value="Saturday"> Saturday
-							</label>
-						</div>
+						<li>
+							<a href="#today" id="nav-today" class="day">Today</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="#sunday" id="nav-sunday" class="day">Sunday</a>
+						</li>
+						<li>
+							<a href="#monday" id="nav-monday" class="day">Monday</a>
+						</li>
+						<li>
+							<a href="#tuesday" id="nav-tuesday" class="day">Tuesday</a>
+						</li>
+						<li>
+							<a href="#wednesday" id="nav-wednesday" class="day">Wednesday</a>
+						</li>
+						<li>
+							<a href="#thursday" id="nav-thursday" class="day">Thursday</a>
+						</li>
+						<li>
+							<a href="#friday" id="nav-friday" class="day">Friday</a>
+						</li>
+						<li>
+							<a href="#sunday" id="nav-saturday" class="day">Saturday</a>
+						</li>
 					</ul>
 				</li>
 				<form class="navbar-form navbar-left" role="search">
@@ -74,13 +77,54 @@
 					</div>
 				</form>
 			</ul>
-			<a class="navbar-text pull-right" id="nav-agency"><small>Chicago Department of Public Health</small></a>
+			<a id="nav-agency" class="navbar-text pull-right" data-toggle="modal" href="#modal-cdph"><small>Chicago Department of Public Health</small></a>
 		</div>
 	</nav>
+
+	<!-- CDPH Modal -->
+	<div class="modal fade" id="modal-cdph" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Notes</h4>
+				</div>
+				<div class="modal-body">
+					<small>Built by <a href="http://about.me/tomkompare" target="_blank">Tom Kompare</a> in partnership with the <a href="http://www.cityofchicago.org/city/en/depts/cdph.html" target="_blank">Chicago Department of Public Health (CDPH)</a>. This was not developed by CDPH and CDPH makes no representations as to the accuracy of the information provided by this map application. <a href="https://github.com/tkompare/flushots2013" target="_blank">The code behind this web application</a> is free and open under an MIT License. <a href="https://github.com/tkompare/flushots2013/issues" target="_blank">Feel free to send me comments</a>.</small>
+					<p> <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button><br> </p>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
 	
+	<!-- Get A Flu Shot Modal -->
+	<div class="modal fade" id="modal-gafs" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Learn More</h4>
+				</div>
+				<div class="modal-body">
+					<small>Welcome to the flu shot finder. If your device has GPS, you may click on the <i>Find Me</i> button to see locations near you. You may enter your address and click on <i>Go</i> to do the same. Click on <i>All</i> or <i>On A Day</i> of the week to highlight locations available on a certain day.<br><br>Anyone 6 months of age and older are eligible to recieve a flu shot. <a href="http://www.cityofchicago.org/city/en/depts/cdph/provdrs/flu.html" target="_blank">Click here for more information about flu shots from the Chicago Departement of Public Health.</a></small>
+					<p> <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button><br> </p>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+	<script>
+		window.jQuery
+			|| document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')
+	</script>
 	<script src="js/jquery-migrate-1.2.1.js"></script>
 	<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAjvSzRjKbN4UCpTSXRo7wkOCAAYb2GXIo&sensor=true"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->

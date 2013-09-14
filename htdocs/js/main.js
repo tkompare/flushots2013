@@ -93,46 +93,29 @@
 		.fail(function(){
 			alert('Oh, no! We are having trouble getting the information we need from storage.');
 		});
-		/*
-		 * The brand popover
-		 */
-		$('#nav-brand').popover({
-			placement:'top',
-			title:'<b>Get A Flu Shot Help</b>',
-			html:true,
-			content:'<small>This is some <b>help</b> text. Bacon turducken t-bone tri-tip jowl biltong pork belly kielbasa drumstick venison short loin. Shoulder andouille strip steak filet mignon meatball, ham short loin swine chuck brisket. Ground round tenderloin meatball shank. Pork loin strip steak short loin shank turducken tenderloin chicken ball tip corned beef ground round spare ribs. Shank ham chicken turkey, doner meatloaf tri-tip beef ribs cow tenderloin pork chop. Jowl frankfurter ground round, tail swine filet mignon salami fatback leberkas.</small>'
-		}); // END brand popover
 		
-		/*
-		 * The agency popover
-		 */
-		$('#nav-agency').popover({
-			placement:'top',
-			title:'<b>About This Web App</b>',
-			html:true,
-			content:'<small>Built by <a href="http://about.me/tomkompare" target="_blank">Tom Kompare</a>. This was not developed by the <a href="http://www.cityofchicago.org/city/en/depts/cdph.html" target="_blank">Chicago Department of Public Health (CDPH)</a> and CDPH makes no representations as to the accuracy of the information provided by this map application. <a href="https://github.com/tkompare/flushots2013" target="_blank">The code behind this web application</a> is free and open under an MIT License. <a href="https://github.com/tkompare/flushots2013/issues" target="_blank">Feel free to send me comments</a>.</small>'
-		}); // END brand popover
+		$('#nav-all').click();
 		
 		/*
 		 * The Day dropup list listener
 		 */
-		$('.day').change(function(){
+		$('.day').click(function(){
 			
 			// Change the UI
 			$('#nav-li-today').removeClass('active');
 			$('#nav-li-days').addClass('active');
-			$('#nav-days-text').text($(this).val());
+			$('#nav-days-text').text($(this).text());
 			if($('#navbar-button').is(':visible'))
 			{
 				$('#navbar-button').click();
 			}
 			
 			// Select the day's events
-			Flu.setMarkersByDay($(this).val());
+			Flu.setMarkersByDay($(this).text());
 			
 		}); // END Day dropup listener
 		
-		$('#nav-today').click(function(){
+		$('#nav-all').click(function(){
 			
 			// Change the UI
 			$('#nav-li-days,.day-btn').removeClass('active');
@@ -144,7 +127,7 @@
 			}
 			
 			// Selected today's events
-			Flu.setMarkersByDay('today');
+			Flu.setMarkersByDay('all');
 			
 		}); // END Day dropup listener
 		

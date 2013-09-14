@@ -46,8 +46,8 @@ var Flushots = (function($) {
 				// Create the Google LatLng object
 				this.Events[i].latlng = new google.maps.LatLng(this.Events[i].data.latitude,this.Events[i].data.longitude);
 				// Create the markers for each event
-				var icon = 'img/blue-dollar.png';
-				if(this.Events[i].data.cost.toLowerCase() == 'free')
+				var icon = 'img/red.png';
+				if($.trim(this.Events[i].data.cost.toLowerCase()) === 'free')
 				{
 					icon = 'img/blue.png';
 				}
@@ -171,11 +171,11 @@ var Flushots = (function($) {
 				for(var j in dayArray)
 				{
 					if (
-						day === 'all'
+						$.trim(day.toLowerCase()) === 'all'
 						||
 						(
 							// If 'today'
-							day === 'today'
+							$.trim(day.toLowerCase()) === 'today'
 							&& Date.getDayNumberFromName(this.now.toString('dddd')) === Date.getDayNumberFromName($.trim(dayArray[j]))
 						)
 						||
@@ -193,7 +193,7 @@ var Flushots = (function($) {
 					(
 						// When 'day is a day of week, don't worry if event has not begun. 
 						// We are looking for today as well as future events.
-						day !== 'today'
+						$.trim(day.toLowerCase()) !== 'today'
 						// Make sure today is on of after event start date.
 						|| parseInt(this.now.toString('yyyyMMdd'),10) >= parseInt(Date.parse(this.Events[i].data.begin_date).toString('yyyyMMdd'),10)
 					)
@@ -204,19 +204,19 @@ var Flushots = (function($) {
 				)
 				{
 					// See if it is a free event
-					if(this.Events[i].data.cost.toLowerCase() == 'free')
+					if($.trim(this.Events[i].data.cost.toLowerCase()) === 'free')
 					{
 						this.Events[i].marker.setIcon('img/blue.png');
 					}
 					else
 					{
 						// Hand over some dead presidents.
-						this.Events[i].marker.setIcon('img/blue-dollar.png');
+						this.Events[i].marker.setIcon('img/red.png');
 					}
 				}
 				else
 				{
-					this.Events[i].marker.setIcon('img/grey.png');
+					this.Events[i].marker.setIcon('img/grey-transparent.png');
 				}
 			}
 		};
