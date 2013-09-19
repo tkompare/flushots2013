@@ -23,10 +23,21 @@ var Event = (function($){
 				else
 				{
 					ThisEvent.infoboxtext = '<div class="infoBox" style="border:2px solid rgb(16,16,16); margin-top:8px; background:#ddd; padding:5px; font-size:90%;">';
-					if(ThisEvent.data.url !== '') { ThisEvent.infoboxtext += '<a href="'+ThisEvent.data.url+'" target="_blank" style="color:#22f">More Information</a> <span id="isical-'+ThisEvent.data.id+'"></span><span id="ical-'+ThisEvent.data.id+'" class="ical"></span><br>'; }
-					ThisEvent.infoboxtext += '<span style="font-size:133%">'+ThisEvent.data.facility_name+'</span>';
+					if(ThisEvent.data.url !== '') { ThisEvent.infoboxtext += '<a href="'+ThisEvent.data.url+'" target="_blank" style="color:#22f">More Information</a>'; }
+					if(ThisEvent.data.url !== '' && (ThisEvent.data.begin_date === ThisEvent.data.end_date)) { ThisEvent.infoboxtext += ' | ';}
+					if(ThisEvent.data.begin_date === ThisEvent.data.end_date) { ThisEvent.infoboxtext += '<span id="ical-'+ThisEvent.data.id+'" class="ical"></span>'; }
+					ThisEvent.infoboxtext += '<br><span style="font-size:133%">'+ThisEvent.data.facility_name+'</span>';
 					if(ThisEvent.data.begin_date === ThisEvent.data.end_date) { ThisEvent.infoboxtext += '<br>'+ThisEvent.data.begin_date; }
-					ThisEvent.infoboxtext += '<br>'+ThisEvent.data.recurrence_days+'<br>'+ThisEvent.data.hours+'<br>Cost: '+ThisEvent.data.cost;
+					ThisEvent.infoboxtext += '<br>'+ThisEvent.data.recurrence_days;
+					if(ThisEvent.data.begin_date === ThisEvent.data.end_date)
+					{
+						ThisEvent.infoboxtext += '<br>'+Date.parse(ThisEvent.data.begin_time).toString('h:mm tt').toLowerCase()+' - '+Date.parse(ThisEvent.data.end_time).toString('h:mm tt').toLowerCase();
+					}
+					else
+					{
+						ThisEvent.infoboxtext += '<br>'+ThisEvent.data.hours;
+					}
+					ThisEvent.infoboxtext += '<br>Cost: '+ThisEvent.data.cost;
 					ThisEvent.infoboxtext += '<br>'+ThisEvent.data.street1;
 					if(ThisEvent.data.street2 !== '') { ThisEvent.infoboxtext += '<br>'+ThisEvent.data.street2; }
 					ThisEvent.infoboxtext += '<br>'+ThisEvent.data.city+', '+ThisEvent.data.state+' '+ThisEvent.data.postal_code;

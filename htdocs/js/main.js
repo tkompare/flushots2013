@@ -102,7 +102,7 @@
 		$('.day').click(function(){
 			
 			// Change the UI
-			$('#nav-li-today').removeClass('active');
+			$('#nav-li-today,#nav-li-seven').removeClass('active');
 			$('#nav-li-days').addClass('active');
 			$('#nav-days-text').text($(this).text());
 			if($('#navbar-button').is(':visible'))
@@ -118,7 +118,7 @@
 		$('#nav-all').click(function(){
 			
 			// Change the UI
-			$('#nav-li-days,.day-btn').removeClass('active');
+			$('#nav-li-days,#nav-li-seven,.day-btn').removeClass('active');
 			$('#nav-li-today').addClass('active');
 			$('#nav-days-text').text('On A Day');
 			if($('#navbar-button').is(':visible'))
@@ -128,6 +128,22 @@
 			
 			// Selected today's events
 			Flu.setMarkersByDay('all');
+			
+		}); // END Day dropup listener
+		
+			$('#nav-seven').click(function(){
+			
+			// Change the UI
+			$('#nav-li-days,#nav-li-all,.day-btn').removeClass('active');
+			$('#nav-li-seven').addClass('active');
+			$('#nav-days-text').text('On A Day');
+			if($('#navbar-button').is(':visible'))
+			{
+				$('#navbar-button').click();
+			}
+			
+			// Selected today's events
+			Flu.setMarkersByDay('seven');
 			
 		}); // END Day dropup listener
 		
@@ -189,13 +205,13 @@
 							else
 							{
 								// Google didn't return a location
-								alert('Sorry! We couldn\'t find that address.');
+								alert('Sorry! We couldn\'t find that address. Results 0');
 							}
 						}
 						else
 						{
 							// Google didn't return an OK status
-							alert('Sorry! We couldn\'t find that address.');
+							alert('Sorry! We couldn\'t find that address. Not okay status');
 						}
 					}
 				);
@@ -206,35 +222,6 @@
 				alert('Please enter a Chicago street address in the box next to the "Go" button in the bottom navigation bar.');
 			}
 		}); // END Go button listener
-		
-		// Find me button listener
-		$('body').on('click','#address-gps',function(){
-			_gaq.push(['_trackEvent', 'Find Me Button', 'Click']);
-			if(navigator.geolocation)
-			{
-				navigator.geolocation.getCurrentPosition(
-					// Success
-					function(position)
-					{
-						_gaq.push(['_trackEvent', 'GPS', 'Success']);
-						var latlng = new google.maps.LatLng(
-							position.coords.latitude,
-							position.coords.longitude
-						);
-						codeLatLng(latlng);
-					},
-					// Failure
-					function()
-					{
-						alert('We\'re sorry. We could not find you. Please type in an address.');
-					},
-					{
-						timeout:5000,
-						enableHighAccuracy:true
-					}
-				);
-			}
-		});
 		
 		$('body').on('click','.directions',function(){
 			var theurl = 'http://www.google.com/maps?';

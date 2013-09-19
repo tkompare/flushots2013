@@ -17,7 +17,6 @@ var Flushots = (function($) {
 		this.setIcal = function(Event)
 		{
 			return function(){
-				$('#isical-'+Event.data.id).text(' |');
 				$('#ical-'+Event.data.id).icalendar({
 					start: new Date(Date._parse(Event.data.begin_date+' '+Event.data.begin_time)),
 					end: new Date(Date._parse(Event.data.begin_date+' '+Event.data.end_time)),
@@ -190,7 +189,9 @@ var Flushots = (function($) {
 				}
 				// If event is after begin date and before end date, and is in the list of days of the week...
 				if (
-					(
+					// If 'day' is in the recurrence days list.
+					onDay === true
+					&& (
 						// When 'day is a day of week, don't worry if event has not begun. 
 						// We are looking for today as well as future events.
 						$.trim(day.toLowerCase()) !== 'today'
@@ -199,8 +200,25 @@ var Flushots = (function($) {
 					)
 					// If today is before or on event end date
 					&& parseInt(this.now.toString('yyyyMMdd'),10) <= parseInt(Date.parse(this.Events[i].data.end_date).toString('yyyyMMdd'),10)
-					// If 'day' is in the recurrence days list.
-					&& onDay === true
+				)
+				{
+					// See if it is a free event
+					if($.trim(this.Events[i].data.cost.toLowerCase()) === 'free')
+					{
+						this.Events[i].marker.setIcon('img/blue.png');
+					}
+					else
+					{
+						// Hand over some dead presidents.
+						this.Events[i].marker.setIcon('img/red.png');
+					}
+				}
+				else if
+				(
+					$.trim(day.toLowerCase()) === 'seven'
+					&& onDay === false
+					// If today is before or on event end date
+					&& parseInt(Date.today().add({days:6}).toString('yyyyMMdd'),10) >= parseInt(Date.parse(this.Events[i].data.end_date).toString('yyyyMMdd'),10)
 				)
 				{
 					// See if it is a free event
