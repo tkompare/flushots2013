@@ -218,7 +218,13 @@ var Flushots = (function($) {
 					$.trim(day.toLowerCase()) === 'seven'
 					&& onDay === false
 					// If today is before or on event end date
-					&& parseInt(Date.today().add({days:6}).toString('yyyyMMdd'),10) >= parseInt(Date.parse(this.Events[i].data.end_date).toString('yyyyMMdd'),10)
+					&& (
+						parseInt(Date.today().add({days:6}).toString('yyyyMMdd'),10) >= parseInt(Date.parse(this.Events[i].data.end_date).toString('yyyyMMdd'),10)
+						|| (
+							(parseInt(Date.today().toString('yyyyMMdd'),10) >= parseInt(Date.parse(this.Events[i].data.begin_date).toString('yyyyMMdd'),10) && parseInt(Date.today().toString('yyyyMMdd'),10) <= parseInt(Date.parse(this.Events[i].data.end_date).toString('yyyyMMdd'),10))
+							|| (parseInt(Date.today().add({days:6}).toString('yyyyMMdd'),10) >= parseInt(Date.parse(this.Events[i].data.begin_date).toString('yyyyMMdd'),10) && parseInt(Date.today().add({days:6}).toString('yyyyMMdd'),10) <= parseInt(Date.parse(this.Events[i].data.end_date).toString('yyyyMMdd'),10))
+						)
+					)
 				)
 				{
 					// See if it is a free event
