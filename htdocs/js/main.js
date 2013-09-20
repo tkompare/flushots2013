@@ -6,19 +6,25 @@
 	var Default = {
 		// City
 		city:'Chicago',
-		// DOM ID of where the Google Map is rendered
+		// DOM ID of where the Google Map is to be rendered
 		domid:'map',
+		// Google Fusion Tables SQL-like query string for flu shot location data
+		eventquery:'SELECT * FROM 1GmmKriTo3aXmM15-fl8q7J1mT1g8IyCm4C6tD-c',
 		// Google Fusion Tables URI
 		fturl:'https://www.googleapis.com/fusiontables/v1/query',
 		// Google maps API key
 		googlemapsapikey:'AIzaSyAjvSzRjKbN4UCpTSXRo7wkOCAAYb2GXIo',
-		// Google Fusion Tables SQL-like query string for school location data
-		eventquery:'SELECT * FROM 1GmmKriTo3aXmM15-fl8q7J1mT1g8IyCm4C6tD-c',
+		// Icon for other for-fee events
+		iconfee:'/img/red.png',
+		// Icon for Free events
+		iconfree:'/img/blue.png',
+		// Icon for your location
+		iconlocation:'/img/yellow-dot.png',
 		// infobox.js options
 		infoboxoptions:{
 			disableAutoPan: false,
 			maxWidth: 0,
-			pixelOffset: new google.maps.Size(-101, 0),
+			pixelOffset: new google.maps.Size(-121, 0),
 			zIndex: null,
 			boxStyle: {
 				background: "url('img/tipbox.gif') no-repeat",
@@ -26,7 +32,7 @@
 				width: "240px"
 			},
 			closeBoxMargin: "11px 4px 4px 4px",
-			closeBoxURL: "img/close.gif",
+			closeBoxURL: "img/close_x.png",
 			infoBoxClearance: new google.maps.Size(25, 60),
 			visible: false,
 			pane: "floatPane",
@@ -43,7 +49,7 @@
 		// Initial zoom level for the Google map
 		zoom:12,
 		// Zoom for finding address
-		zoomaddress:13
+		zoomaddress:12
 	};
 	
 	/* 
@@ -131,7 +137,8 @@
 			
 		}); // END Day dropup listener
 		
-			$('#nav-seven').click(function(){
+		// Seven Day listener
+		$('#nav-seven').click(function(){
 			
 			// Change the UI
 			$('#nav-li-days,#nav-li-all,.day-btn').removeClass('active');
@@ -145,7 +152,7 @@
 			// Selected today's events
 			Flu.setMarkersByDay('seven');
 			
-		}); // END Day dropup listener
+		}); // END 7 day listener
 		
 		$('#nav-address').change(function(){
 			if($(this).val().length === 0)
@@ -183,7 +190,7 @@
 									Flu.AddressMarker = new google.maps.Marker({
 										position:Results[0].geometry.location,
 										map: Map.Map,
-										icon:'/img/red-dot.png',
+										icon:Default.iconlocation,
 										clickable:false
 									});
 								}
@@ -205,13 +212,13 @@
 							else
 							{
 								// Google didn't return a location
-								alert('Sorry! We couldn\'t find that address. Results 0');
+								alert('Sorry! We couldn\'t find that address.');
 							}
 						}
 						else
 						{
 							// Google didn't return an OK status
-							alert('Sorry! We couldn\'t find that address. Not okay status');
+							alert('Sorry! We couldn\'t find that address.');
 						}
 					}
 				);
@@ -219,7 +226,7 @@
 			else
 			{
 				// Dude. The 'nav-address' input is empty
-				alert('Please enter a Chicago street address in the box next to the "Go" button in the bottom navigation bar.');
+				alert('Please enter a '+Default.city+' street address in the box next to the "Go" button in the bottom navigation bar.');
 			}
 		}); // END Go button listener
 		
@@ -227,7 +234,7 @@
 			var theurl = 'http://www.google.com/maps?';
 			if($('#nav-address').val() !== '')
 			{
-				theurl += 'saddr='+$('#nav-address').val()+' Chicago, IL&';
+				theurl += 'saddr='+$('#nav-address').val()+' '+Default.city+', '+Default.state+'&';
 			}
 			theurl += 'daddr='+this.Events[i].data.street1+' '+this.Events[i].data.city+', '+this.Events[i].data.state+' '+this.Events[i].data.postal_code;
 			window.open(theurl);

@@ -111,7 +111,7 @@ var Flushots = (function($) {
 			controlDiv.style.padding = '1em';
 			// Set CSS for the control border.
 			var controlUI = document.createElement('div');
-			controlUI.style.backgroundColor = '#000';
+			controlUI.style.backgroundColor = '#333';
 			//controlUI.style.color = 'white';
 			controlUI.style.borderStyle = 'solid';
 			controlUI.style.borderWidth = '0px';
@@ -122,7 +122,7 @@ var Flushots = (function($) {
 			controlDiv.appendChild(controlUI);
 			// Set CSS for the control interior.
 			var controlText = document.createElement('div');
-			controlText.style.fontFamily = 'sans-serif';
+			controlText.style.fontFamily = '"Helvetica Neue",Helvetica,Arial,sans-serif';
 			controlText.style.fontSize = '12px';
 			controlText.style.color = '#fff';
 			controlText.style.paddingLeft = '.5em';

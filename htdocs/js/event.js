@@ -10,8 +10,12 @@ var Event = (function($){
 		this.infobox = null;
 		this.infoboxtext = null;
 		
-		// Oh dear lord, browser detection. -10 Charisma. Is the browser android or iPhone?
-		this.isPhone = (navigator.userAgent.match(/iPhone/i) || (navigator.userAgent.toLowerCase().indexOf("android") > -1) || (navigator.userAgent.toLowerCase().indexOf("blackberry") > -1)) ? true : false;
+		// Oh dear lord, browser detection. -10 Charisma. Is the browser android or iPhone or Blackberry or Windows mobile?
+		this.isPhone = (navigator.userAgent.match(/iPhone/i)
+			|| (navigator.userAgent.toLowerCase().indexOf("android") > -1)
+			|| (navigator.userAgent.toLowerCase().indexOf("blackberry") > -1)
+			|| navigator.userAgent.match(/iemobile/i)
+			|| navigator.userAgent.match(/Windows Phone/i)) ? true : false;
 
 		this.toggleInfoBox = function(Map,ThisEvent)
 		{
@@ -22,13 +26,13 @@ var Event = (function($){
 				}
 				else
 				{
-					ThisEvent.infoboxtext = '<div class="infoBox" style="border:2px solid rgb(16,16,16); margin-top:8px; background:#ddd; padding:5px; font-size:90%;">';
+					ThisEvent.infoboxtext = '<div class="infoBox" style="border:2px solid rgb(16,16,16); margin-top:8px; background:#ddd; padding:5px; font-family:Helvetica Neue,Helvetica,Arial,sans-serif">';
 					if(ThisEvent.data.url !== '') { ThisEvent.infoboxtext += '<a href="'+ThisEvent.data.url+'" target="_blank" style="color:#22f">More Information</a>'; }
 					if(ThisEvent.data.url !== '' && (ThisEvent.data.begin_date === ThisEvent.data.end_date)) { ThisEvent.infoboxtext += ' | ';}
 					if(ThisEvent.data.begin_date === ThisEvent.data.end_date) { ThisEvent.infoboxtext += '<span id="ical-'+ThisEvent.data.id+'" class="ical"></span>'; }
 					ThisEvent.infoboxtext += '<br><span style="font-size:133%">'+ThisEvent.data.facility_name+'</span>';
-					if(ThisEvent.data.begin_date === ThisEvent.data.end_date) { ThisEvent.infoboxtext += '<br>'+ThisEvent.data.begin_date; }
 					ThisEvent.infoboxtext += '<br>'+ThisEvent.data.recurrence_days;
+					if(ThisEvent.data.begin_date === ThisEvent.data.end_date) { ThisEvent.infoboxtext += '<br>'+ThisEvent.data.begin_date; }
 					if(ThisEvent.data.begin_date === ThisEvent.data.end_date)
 					{
 						ThisEvent.infoboxtext += '<br>'+Date.parse(ThisEvent.data.begin_time).toString('h:mm tt').toLowerCase()+' - '+Date.parse(ThisEvent.data.end_time).toString('h:mm tt').toLowerCase();
