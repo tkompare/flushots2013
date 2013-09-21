@@ -78,7 +78,7 @@
 		if(Flu.geolocate)
 		{
 			var FindMeDiv = document.createElement('div');
-			Flu.setFindMeControl(FindMeDiv,Map,Flu);
+			Flu.setFindMeControl(FindMeDiv,Map,Flu,Default);
 			FindMeDiv.index = 1;
 			Map.Map.controls[google.maps.ControlPosition.TOP_RIGHT].push(FindMeDiv);
 		}
@@ -166,6 +166,7 @@
 		
 		// Go button listener
 		$('#nav-go').click(function(){
+			$('#nav-address').blur();
 			if($('#nav-address').val().length > 0)
 			{
 				var Geocoder = new google.maps.Geocoder();
