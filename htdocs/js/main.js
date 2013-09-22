@@ -100,32 +100,11 @@
 			alert('Oh, no! We are having trouble getting the information we need from storage.');
 		});
 		
-		$('#nav-all').click();
-		
-		/*
-		 * The Day dropup list listener
-		 */
-		$('.day').click(function(){
-			
-			// Change the UI
-			$('#nav-li-today,#nav-li-seven').removeClass('active');
-			$('#nav-li-days').addClass('active');
-			$('#nav-days-text').text($(this).text());
-			if($('#navbar-button').is(':visible'))
-			{
-				$('#navbar-button').click();
-			}
-			
-			// Select the day's events
-			Flu.setMarkersByDay($(this).text());
-			
-		}); // END Day dropup listener
-		
 		$('#nav-all').click(function(){
 			
 			// Change the UI
 			$('#nav-li-days,#nav-li-seven,.day-btn').removeClass('active');
-			$('#nav-li-today').addClass('active');
+			$('#nav-li-all').addClass('active');
 			$('#nav-days-text').text('On A Day');
 			if($('#navbar-button').is(':visible'))
 			{
@@ -153,6 +132,25 @@
 			Flu.setMarkersByDay('seven');
 			
 		}); // END 7 day listener
+		
+		/*
+		 * The Day dropup list listener
+		 */
+		$('.day').click(function(){
+			
+			// Change the UI
+			$('#nav-li-all,#nav-li-seven').removeClass('active');
+			$('#nav-li-days').addClass('active');
+			$('#nav-days-text').text($(this).text());
+			if($('#navbar-button').is(':visible'))
+			{
+				$('#navbar-button').click();
+			}
+			
+			// Select the day's events
+			Flu.setMarkersByDay($(this).text());
+			
+		}); // END Day dropup listener
 		
 		$('#nav-address').change(function(){
 			if($(this).val().length === 0)
@@ -231,6 +229,7 @@
 			}
 		}); // END Go button listener
 		
+		// Listen for clicks on "directions" links in the location pop-ups.
 		$('body').on('click','.directions',function(){
 			var theurl = 'http://www.google.com/maps?';
 			if($('#nav-address').val() !== '')

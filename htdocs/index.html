@@ -16,7 +16,9 @@
 		.google-map-canvas,
 		.google-map-canvas * { .box-sizing(content-box); }
 		#map img { max-width: none; }
-		.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {background-color:#333; color:#fff; text-decoration:none;}
+		.dropdown-menu { background-color:#333; }
+		.dropdown-menu > li > a { color:#aaa; }
+		.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {background-color:#fff; color:#333; text-decoration:none;}
 	</style>
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -39,7 +41,7 @@
 		</div>
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
-				<li id="nav-li-all"><a id="nav-all" href="#all">All</a></li>
+				<li id="nav-li-all" class="active"><a id="nav-all" href="#all">All</a></li>
 				<li id="nav-li-seven"><a id="nav-seven" href="#seven">Next 7 Days</a></li>
 				<li id="nav-li-days" class="dropdown">
 					<a id="nav-days" href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="nav-days-text">On A Day</span><b class="caret"></b></a>
@@ -73,11 +75,11 @@
 				</li>
 			</ul>
 			<form class="navbar-form navbar-left" onSubmit="$('#nav-go').click(); return false;" role="search">
-					<div class="form-group">
-						<input id="nav-address" type="text" class="form-control input-sm" placeholder="Enter an address">
-					</div>
-					<button id="nav-go" class="btn btn-default btn-sm" type="button">Go</button>
-				</form>
+				<div class="form-group">
+					<input id="nav-address" type="text" class="form-control input-sm" placeholder="Enter an address">
+				</div>
+				<button id="nav-go" class="btn btn-default btn-sm" type="button">Go</button>
+			</form>
 			<a id="nav-agency" class="navbar-text pull-right" data-toggle="modal" href="#modal-cdph"><small>Chicago Department of Public Health</small></a>
 		</div>
 	</nav>
