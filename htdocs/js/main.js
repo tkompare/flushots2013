@@ -49,7 +49,7 @@
 		// Initial zoom level for the Google map
 		zoom:12,
 		// Zoom for finding address
-		zoomaddress:12
+		zoomaddress:14
 	};
 	
 	/* 
