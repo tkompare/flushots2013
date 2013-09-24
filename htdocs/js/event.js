@@ -31,7 +31,7 @@ var Event = (function($){
 					if(ThisEvent.data.url !== '' && (ThisEvent.data.begin_date === ThisEvent.data.end_date)) { ThisEvent.infoboxtext += ' | ';}
 					if(ThisEvent.data.begin_date === ThisEvent.data.end_date) { ThisEvent.infoboxtext += '<span id="ical-'+ThisEvent.data.id+'" class="ical"></span>'; }
 					ThisEvent.infoboxtext += '<br><span style="font-size:133%">'+ThisEvent.data.facility_name+'</span>';
-					ThisEvent.infoboxtext += '<br>'+ThisEvent.data.recurrence_days;
+					if(ThisEvent.data.begin_date === ThisEvent.data.end_date) { ThisEvent.infoboxtext += '<br>'+ThisEvent.data.recurrence_days; }
 					if(ThisEvent.data.begin_date === ThisEvent.data.end_date) { ThisEvent.infoboxtext += '<br>'+ThisEvent.data.begin_date; }
 					if(ThisEvent.data.begin_date === ThisEvent.data.end_date)
 					{

@@ -239,10 +239,25 @@ var Flushots = (function($) {
 					&& onDay === false
 					// If today is before or on event end date
 					&& (
-						parseInt(Date.today().add({days:6}).toString('yyyyMMdd'),10) >= parseInt(Date.parse(this.Events[i].data.end_date).toString('yyyyMMdd'),10)
-						|| (
-							(parseInt(Date.today().toString('yyyyMMdd'),10) >= parseInt(Date.parse(this.Events[i].data.begin_date).toString('yyyyMMdd'),10) && parseInt(Date.today().toString('yyyyMMdd'),10) <= parseInt(Date.parse(this.Events[i].data.end_date).toString('yyyyMMdd'),10))
-							|| (parseInt(Date.today().add({days:6}).toString('yyyyMMdd'),10) >= parseInt(Date.parse(this.Events[i].data.begin_date).toString('yyyyMMdd'),10) && parseInt(Date.today().add({days:6}).toString('yyyyMMdd'),10) <= parseInt(Date.parse(this.Events[i].data.end_date).toString('yyyyMMdd'),10))
+						(
+							// Event end date is on or after today & event end date is before or is 7 days from now
+							parseInt(Date.parse(this.Events[i].data.end_date).toString('yyyyMMdd'),10) >= parseInt(Date.today().toString('yyyyMMdd'),10)
+							&& parseInt(Date.parse(this.Events[i].data.end_date).toString('yyyyMMdd'),10) <= parseInt(Date.today().add({days:6}).toString('yyyyMMdd'),10)
+						)
+						||
+						(
+							// 
+							(
+								// Event begin date is before or on today & event end date is after or on today
+								parseInt(Date.parse(this.Events[i].data.begin_date).toString('yyyyMMdd'),10) <= parseInt(Date.today().toString('yyyyMMdd'),10)
+								&& parseInt(Date.parse(this.Events[i].data.end_date).toString('yyyyMMdd'),10) >= parseInt(Date.today().toString('yyyyMMdd'),10)
+							)
+							||
+							(
+								// event begin date is on or before 7 days from now & event end date is on or after today
+								parseInt(Date.parse(this.Events[i].data.begin_date).toString('yyyyMMdd'),10) <= parseInt(Date.today().add({days:6}).toString('yyyyMMdd'),10)
+								&& parseInt(Date.parse(this.Events[i].data.end_date).toString('yyyyMMdd'),10)  >= parseInt(Date.today().add({days:6}).toString('yyyyMMdd'),10)
+							)
 						)
 					)
 				)

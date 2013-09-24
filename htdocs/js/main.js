@@ -9,7 +9,7 @@
 		// DOM ID of where the Google Map is to be rendered
 		domid:'map',
 		// Google Fusion Tables SQL-like query string for flu shot location data
-		eventquery:'SELECT * FROM 1GmmKriTo3aXmM15-fl8q7J1mT1g8IyCm4C6tD-c',
+		eventquery:'SELECT * FROM 1leqPq9hrsGhnE8NoT00YZn1ITTzhK6BhrF8LNL4',
 		// Google Fusion Tables URI
 		fturl:'https://www.googleapis.com/fusiontables/v1/query',
 		// Google maps API key
