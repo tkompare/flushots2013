@@ -62,7 +62,9 @@ var Flushots = (function($) {
 			}
 			for(var i in this.Events)
 			{
+				// Listen for marker clicks
 				google.maps.event.addListener(this.Events[i].marker, 'click', this.Events[i].toggleInfoBox(Map.Map,this.Events[i]));
+				// If it is a one-day event, add the ical link.
 				if(this.Events[i].data.begin_date === this.Events[i].data.end_date)
 				{
 					google.maps.event.addListener(this.Events[i].infobox, 'domready', this.setIcal(this.Events[i]));
@@ -86,6 +88,25 @@ var Flushots = (function($) {
 						{
 							var formattedAddress = Results[0].formatted_address.split(',');
 							$('#nav-address').val(formattedAddress[0]);
+							
+							// Mask the exact address before recording
+							// Example: '1456 W Greenleaf Ave' becomes '1400 W Greenleaf Ave'
+							var addarray = $.trim($('#nav-address').val()).split(' ');
+							// Chicago addresses start with numbers. So look for them and mask them.
+							if(addarray[0].match(/^[0-9]+$/) !== null)
+							{
+								var replacement = addarray[0].substr(0,addarray[0].length-2)+'00';
+								if(replacement !== '00')
+								{
+									addarray[0] = replacement;
+								}
+								else
+								{
+									addarray[0] = '0';
+								}
+							}
+							var maskedAddress = addarray.join(' ');
+							_gaq.push(['_trackEvent', 'Find Me', 'Address', maskedAddress]);
 						}
 						else
 						{
