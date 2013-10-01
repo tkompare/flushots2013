@@ -13,7 +13,7 @@
 		// Google Fusion Tables URI
 		fturl:'https://www.googleapis.com/fusiontables/v1/query',
 		// Google maps API key
-		googlemapsapikey:'AIzaSyAjvSzRjKbN4UCpTSXRo7wkOCAAYb2GXIo',
+		googlemapsapikey:'AIzaSyDRVus9kkg8mr6M7EZUmXZsdoM7JSFbvC8',
 		// Icon for other for-fee events
 		iconfee:'/img/red.png',
 		// Icon for Free events
