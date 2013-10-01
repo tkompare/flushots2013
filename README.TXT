@@ -2,7 +2,7 @@ I have again partnered with the Chicago Department of Public Health (CDPH) to cr
 
 I created this as a volunteer effort, The code that runs it is open, completely free, and reusable by anyone.
 
-Special Thanks to Smart Chciago Collaborative for hosting this thing. Also thanks to Raed Mansour, Dr. Julie Morita, and Commissioner Dr. Bechara Choucair (all with CDPH) for begin great to work with.
+Special thanks to Smart Chicago Collaborative for hosting this thing. Also thanks to Raed Mansour, Dr. Julie Morita, and Commissioner Dr. Bechara Choucair (all with CDPH) for being great to work with.
 
 NOTES:
 
