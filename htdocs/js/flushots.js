@@ -26,7 +26,7 @@ var Flushots = (function($) {
 					location: Event.data.facility_name+' - '+Event.data.street1+' - '+Event.data.city+' '+Event.data.state+' '+Event.data.postal_code,
 					iconSize: 16,
 					sites: ['icalendar'],
-					echoUrl: 'ical.php'
+					echoUrl: '//flushots.smartchicagoapps.org/ical.php'
 				});
 			};
 		};
@@ -177,6 +177,40 @@ var Flushots = (function($) {
 						}
 					);
 				}
+			});
+		};
+		
+		this.setMapLegend = function(controlDiv,Map,Flu,Default)
+		{
+			// Set CSS styles for the DIV containing the control
+			// Setting padding to 5 px will offset the control
+			// from the edge of the map.
+			controlDiv.style.padding = '1em';
+			// Set CSS for the control border.
+			var controlUI = document.createElement('div');
+			controlUI.style.backgroundColor = 'rgba(255,255,255,0.7)';
+			//controlUI.style.color = 'white';
+			controlUI.style.borderStyle = 'solid';
+			controlUI.style.borderWidth = '0px';
+			controlUI.style.cursor = 'pointer';
+			controlUI.style.textAlign = 'center';
+			controlUI.style.borderRadius = '6px';
+			controlUI.title = 'Click to hide.';
+			controlDiv.appendChild(controlUI);
+			// Set CSS for the control interior.
+			var controlText = document.createElement('div');
+			controlText.style.fontFamily = '"Helvetica Neue",Helvetica,Arial,sans-serif';
+			controlText.style.fontSize = '12px';
+			controlText.style.color = '#333';
+			controlText.style.paddingLeft = '.5em';
+			controlText.style.paddingRight = '.5em';
+			controlText.style.paddingTop = '.3em';
+			controlText.style.paddingBottom = '.3em';
+			controlText.innerHTML = '<div>Free<img src="img/blue.png" /></div>';
+			controlUI.appendChild(controlText);
+		// Setup the click event listeners.
+			google.maps.event.addDomListener(controlUI, 'click', function() {
+				Map.Map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].clear();
 			});
 		};
 		

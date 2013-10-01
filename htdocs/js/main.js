@@ -75,6 +75,11 @@
 		 */
 		var Flu = new Flushots(Default.infoboxoptions);
 		
+		var LegendDiv = document.createElement('div');
+		Flu.setMapLegend(LegendDiv,Map,Flu,Default);
+		LegendDiv.index = 1;
+		Map.Map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(LegendDiv);
+		
 		if(Flu.geolocate)
 		{
 			var FindMeDiv = document.createElement('div');
