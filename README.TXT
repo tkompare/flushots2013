@@ -11,3 +11,5 @@ NOTES:
 -- If you want to reuse this code for your city/county/province/state, a good place to start is in main.js and altering the properties of the "Default" object at the top of the file.
 
 -- I try to use meaningful variable names, so hopefully the code won't be too hard to follow.
+
+-- The data behind this site is a Google Fusion Table and is found here: https://www.google.com/fusiontables/DataSource?docid=1leqPq9hrsGhnE8NoT00YZn1ITTzhK6BhrF8LNL4
