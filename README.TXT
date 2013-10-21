@@ -1,4 +1,4 @@
-I have again partnered with the Chicago Department of Public Health (CDPH) to create an updated flu shot finder web application. Currently it has all the CDPH free locations and events. It also includes Walgreens, Dominick's, and soon other locations.
+I have again partnered with the Chicago Department of Public Health (CDPH) to create an updated flu shot finder web application. Currently it has all the CDPH free locations and events. It also includes Walgreens, Dominick's, Jewel/Osco, and CVS locations that offer flu shots.
 
 I created this as a volunteer effort. The code that runs it is open, completely free, and reusable by anyone.
 
