@@ -19,6 +19,11 @@
 		.dropdown-menu { background-color:#333; }
 		.dropdown-menu > li > a { color:#aaa; }
 		.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {background-color:#fff; color:#333; text-decoration:none;}
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700);
+    span.cfn { font-family : 'Open Sans', sans-serif; }
+    span.cfn-code { color : #CF1B41; font-weight : bold; }
+    span.cfn-for { color : #939699; font-style : italic; }
+    span.cfn-nash { color : #399FD3; }
 	</style>
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -80,12 +85,12 @@
 				</div>
 				<button id="nav-go" class="btn btn-default btn-sm" type="button">Go</button>
 			</form>
-			<a id="nav-agency" class="navbar-text pull-right" data-toggle="modal" href="#modal-cdph"><small>Chicago Department of Public Health</small></a>
+			<a id="nav-agency" class="navbar-text pull-right" data-toggle="modal" href="#modal-cfn"><small><span class="cfn"><span class="cfn-code">Code</span> <span class="cfn-for">for</span> <span class="cfn-nash">Nashville</span></span></small></a>
 		</div>
 	</nav>
 
 	<!-- CDPH Modal -->
-	<div class="modal fade" id="modal-cdph" tabindex="-1">
+	<div class="modal fade" id="modal-cfn" tabindex="-1">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -93,7 +98,25 @@
 					<h4 class="modal-title">Notes</h4>
 				</div>
 				<div class="modal-body">
-					<small>Built by <a href="http://about.me/tomkompare" target="_blank">Tom Kompare</a> in partnership with the <a href="http://www.cityofchicago.org/city/en/depts/cdph.html" target="_blank">Chicago Department of Public Health (CDPH)</a>. This was not developed by CDPH and CDPH makes no representations as to the accuracy of the information provided by this map application. This map application is hosted by the <a href="http://www.smartchicagocollaborative.org/" target="_blank">Smart Chicago Collaborative</a>. <a href="https://github.com/tkompare/flushots2013" target="_blank">The code behind this web application</a> is free, open, and under a <a href="https://github.com/tkompare/flushots2013/blob/master/LICENSE.TXT"target="_blank">MIT License</a>. Feel free to <a href="https://github.com/tkompare/flushots2013/issues" target="_blank">send me comments</a>.</small>
+					<small>
+            This application was originally developed by
+            <a href="http://about.me/tomkompare" target="_blank">Tom Kompare</a>
+            in partnership with the
+            <a href="http://www.cityofchicago.org/city/en/depts/cdph.html" target="_blank">Chicago Department of Public Health (CDPH)</a>.
+            The application was forked and localized for Nashville by
+            <a href="http://www.codefornashville.org" target="_blank">Code for Nashville</a>.
+            This was not developed by the Metro Public Health Department
+            and the Metro Public Health Department makes no representations as
+            to the accuracy of the information provided by this map application.
+            <a href="https://github.com/code-for-nashville/flushots2013" target="_blank">The
+            code behind this web application</a> is free, open, and under an
+            <a href="https://github.com/code-for-nashville/flushots2013/blob/master/LICENSE.TXT"target="_blank">MIT License</a>.
+            Thanks again to
+            <a href="http://about.me/tomkompare" target="_blank">Tom Kompare</a>
+            and the
+            <a href="http://www.smartchicagocollaborative.org/" target="_blank">Smart Chicago Collaborative</a>
+            for their contributions.
+          </small>
 					<p><button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button><br></p>
 				</div>
 			</div>
@@ -121,8 +144,8 @@
 		window.jQuery
 			|| document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')
 	</script>
-	<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyDRVus9kkg8mr6M7EZUmXZsdoM7JSFbvC8&sensor=true"></script>
-	<!-- All JS files below are included in 'main.min.js' file
+	<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBoLtwZuTU86R_YGAUISPOX73ienTJTbYs&sensor=true"></script>
+	<!-- All JS files below are included in 'main.min.js' file -->
 	<script src="js/jquery-migrate-1.2.1.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/date.js"></script>
@@ -133,8 +156,8 @@
 	<script src="js/event.js"></script>
 	<script src="js/flushots.js"></script>
 	<script src="js/main.js"></script>
--->
-	<script src="js/main.min.js"></script>
+
+	<!-- <script src="js/main.min.js"></script> -->
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-42855450-2']);
