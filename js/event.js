@@ -33,7 +33,7 @@ var Event = (function($){
 					ThisEvent.infoboxtext += '<br><span style="font-size:133%">'+ThisEvent.data.facility_name+'</span>';
 					if(ThisEvent.data.begin_date === ThisEvent.data.end_date) { ThisEvent.infoboxtext += '<br>'+ThisEvent.data.recurrence_days; }
 					if(ThisEvent.data.begin_date === ThisEvent.data.end_date) { ThisEvent.infoboxtext += '<br>'+ThisEvent.data.begin_date; }
-					if(ThisEvent.data.begin_date === ThisEvent.data.end_date)
+					if(ThisEvent.data.begin_date === ThisEvent.data.end_date && ThisEvent.data.begin_time !== ThisEvent.data.end_time)
 					{
 						ThisEvent.infoboxtext += '<br>'+Date.parse(ThisEvent.data.begin_time).toString('h:mm tt').toLowerCase()+' - '+Date.parse(ThisEvent.data.end_time).toString('h:mm tt').toLowerCase();
 					}
