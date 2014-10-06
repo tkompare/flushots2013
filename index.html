@@ -1,104 +1,104 @@
 <!DOCTYPE html>
 <html lang=en>
 <head>
-	<meta charset=utf-8>
-	<title>Get A Flu Shot</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-	<meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1" />
-	<link rel="icon" href="img/favicon.ico" type=”image/x-icon”>
-	<link rel="apple-touch-icon-precomposed" href="img/icon.png" />
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<!-- Bootstrap -->
-	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<style>
-		body { padding-bottom: 75px; }
-		.google-map-canvas,
-		.google-map-canvas * { .box-sizing(content-box); }
-		#map img { max-width: none; }
-		.dropdown-menu { background-color:#333; }
-		.dropdown-menu > li > a { color:#aaa; }
-		.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {background-color:#fff; color:#333; text-decoration:none;}
+  <meta charset=utf-8>
+  <title>Get A Flu Shot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+  <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1" />
+  <link rel="icon" href="img/favicon.ico" type=”image/x-icon”>
+  <link rel="apple-touch-icon-precomposed" href="img/icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <style>
+    body { padding-bottom: 75px; }
+    .google-map-canvas,
+    .google-map-canvas * { .box-sizing(content-box); }
+    #map img { max-width: none; }
+    .dropdown-menu { background-color:#333; }
+    .dropdown-menu > li > a { color:#aaa; }
+    .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {background-color:#fff; color:#333; text-decoration:none;}
     @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700);
     span.cfn { font-family : 'Open Sans', sans-serif; }
     span.cfn-code { color : #CF1B41; font-weight : bold; }
     span.cfn-for { color : #939699; font-style : italic; }
     span.cfn-nash { color : #399FD3; }
-	</style>
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-		<script src="js/ltIE9.min.js"></script>
-	<![endif]-->
+  </style>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/ltIE9.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-	
-	<div id=map style="position:absolute; top:0; bottom:50px; left:0; right:0;"></div>
-	
-	<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
-		<div class="navbar-header">
-			<button id="navbar-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a id="nav-brand" class="navbar-brand" data-toggle="modal" href="#modal-gafs">Get A Flu Shot</a>
-		</div>
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav">
-				<li id="nav-li-all" class="active"><a id="nav-all" href="#all">All</a></li>
-				<li id="nav-li-seven"><a id="nav-seven" href="#seven">Next 7 Days</a></li>
-				<li id="nav-li-days" class="dropdown">
-					<a id="nav-days" href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="nav-days-text">On A Day</span><b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="#today" id="nav-today" class="day">Today</a>
-						</li>
-						<li class="divider"></li>
-						<li>
-							<a href="#sunday" id="nav-sunday" class="day">Sunday</a>
-						</li>
-						<li>
-							<a href="#monday" id="nav-monday" class="day">Monday</a>
-						</li>
-						<li>
-							<a href="#tuesday" id="nav-tuesday" class="day">Tuesday</a>
-						</li>
-						<li>
-							<a href="#wednesday" id="nav-wednesday" class="day">Wednesday</a>
-						</li>
-						<li>
-							<a href="#thursday" id="nav-thursday" class="day">Thursday</a>
-						</li>
-						<li>
-							<a href="#friday" id="nav-friday" class="day">Friday</a>
-						</li>
-						<li>
-							<a href="#saturday" id="nav-saturday" class="day">Saturday</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-			<form class="navbar-form navbar-left" onSubmit="$('#nav-go').click(); return false;" role="search">
-				<div class="form-group">
-					<input id="nav-address" type="text" class="form-control input-sm" placeholder="Enter an address">
-				</div>
-				<button id="nav-go" class="btn btn-default btn-sm" type="button">Go</button>
-			</form>
-			<a id="nav-agency" class="navbar-text pull-right" data-toggle="modal" href="#modal-cfn"><small><span class="cfn"><span class="cfn-code">Code</span> <span class="cfn-for">for</span> <span class="cfn-nash">Nashville</span></span></small></a>
-		</div>
-	</nav>
 
-	<!-- CDPH Modal -->
-	<div class="modal fade" id="modal-cfn" tabindex="-1">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Notes</h4>
-				</div>
-				<div class="modal-body">
-					<small>
+  <div id=map style="position:absolute; top:0; bottom:50px; left:0; right:0;"></div>
+
+  <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    <div class="navbar-header">
+      <button id="navbar-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a id="nav-brand" class="navbar-brand" data-toggle="modal" href="#modal-gafs">Get A Flu Shot</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <li id="nav-li-all" class="active"><a id="nav-all" href="#all">All</a></li>
+        <li id="nav-li-seven"><a id="nav-seven" href="#seven">Next 7 Days</a></li>
+        <li id="nav-li-days" class="dropdown">
+          <a id="nav-days" href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="nav-days-text">On A Day</span><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#today" id="nav-today" class="day">Today</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#sunday" id="nav-sunday" class="day">Sunday</a>
+            </li>
+            <li>
+              <a href="#monday" id="nav-monday" class="day">Monday</a>
+            </li>
+            <li>
+              <a href="#tuesday" id="nav-tuesday" class="day">Tuesday</a>
+            </li>
+            <li>
+              <a href="#wednesday" id="nav-wednesday" class="day">Wednesday</a>
+            </li>
+            <li>
+              <a href="#thursday" id="nav-thursday" class="day">Thursday</a>
+            </li>
+            <li>
+              <a href="#friday" id="nav-friday" class="day">Friday</a>
+            </li>
+            <li>
+              <a href="#saturday" id="nav-saturday" class="day">Saturday</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" onSubmit="$('#nav-go').click(); return false;" role="search">
+        <div class="form-group">
+          <input id="nav-address" type="text" class="form-control input-sm" placeholder="Enter an address">
+        </div>
+        <button id="nav-go" class="btn btn-default btn-sm" type="button">Go</button>
+      </form>
+      <a id="nav-agency" class="navbar-text pull-right" data-toggle="modal" href="#modal-cfn"><small><span class="cfn"><span class="cfn-code">Code</span> <span class="cfn-for">for</span> <span class="cfn-nash">Nashville</span></span></small></a>
+    </div>
+  </nav>
+
+  <!-- CDPH Modal -->
+  <div class="modal fade" id="modal-cfn" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Notes</h4>
+        </div>
+        <div class="modal-body">
+          <small>
             This application was originally developed by
             <a href="http://about.me/tomkompare" target="_blank">Tom Kompare</a>
             in partnership with the
@@ -117,22 +117,22 @@
             <a href="http://www.smartchicagocollaborative.org/" target="_blank">Smart Chicago Collaborative</a>
             for their contributions.
           </small>
-					<p><button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button><br></p>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- Get A Flu Shot Modal -->
-	<div class="modal fade" id="modal-gafs" tabindex="-1">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Learn More</h4>
-				</div>
-				<div class="modal-body">
-					<small>
+          <p><button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button><br></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Get A Flu Shot Modal -->
+  <div class="modal fade" id="modal-gafs" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Learn More</h4>
+        </div>
+        <div class="modal-body">
+          <small>
             Welcome to the flu shot finder. If your device has GPS, you may
             click on the <i>Find Me</i> button to see locations near you. You
             may enter your address and click on <i>Go</i> to do the same. Click
@@ -143,38 +143,40 @@
             <br>
             <a href="http://www.nashville.gov/News-Media/News-Article/ID/3301/Metro-Health-Department-Offers-Flu-Shots-at-all-Three-Health-Centers" target="_blank">Click here for more information about flu shots from the Metro Public Health Department.</a>
           </small>
-					<p><br><button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button><br></p>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script>
-		window.jQuery
-			|| document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')
-	</script>
-	<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBoLtwZuTU86R_YGAUISPOX73ienTJTbYs&sensor=true"></script>
-	<!-- All JS files below are included in 'main.min.js' file -->
-	<script src="js/jquery-migrate-1.2.1.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/date.js"></script>
-	<script src="js/jquery.icalendar.js"></script>
-	<script src="js/infobox.js"></script>
-	<script src="js/tkmap.4.0.0.js"></script>
-	<script src="js/fusiontable.js"></script>
-	<script src="js/event.js"></script>
-	<script src="js/flushots.js"></script>
-	<script src="js/main.js"></script>
+          <p><br><button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button><br></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<!-- <script src="js/main.min.js"></script> -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-55360291-2', 'auto');
-    ga('send', 'pageview');
+    window.jQuery
+      || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')
+  </script>
+  <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBoLtwZuTU86R_YGAUISPOX73ienTJTbYs&sensor=true"></script>
+  <!-- All JS files below are included in 'main.min.js' file -->
+  <script src="js/jquery-migrate-1.2.1.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/date.js"></script>
+  <script src="js/jquery.icalendar.js"></script>
+  <script src="js/infobox.js"></script>
+  <script src="js/tkmap.4.0.0.js"></script>
+  <script src="js/fusiontable.js"></script>
+  <script src="js/event.js"></script>
+  <script src="js/flushots.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- <script src="js/main.min.js"></script> -->
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-55360291-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
   </script>
 </body>
 </html>
